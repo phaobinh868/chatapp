@@ -34,16 +34,14 @@ export default {
     },
     handleScroll(){
       clearTimeout(this.timeoutScroll);
-      var that = this;
-      this.timeoutScroll = setTimeout(function(){
-        if(that.scrollArea.scrollTop < 20 && that.scrollArea.scrollHeight - that.scrollArea.clientHeight > 0){
-          console.log("loadMoreMessage");
-          that.getSocket.emit('loadMoreMessage', {
-            roomId: that.getRoom._id,
-            lastCreatedAt: that.lastCreatedAt
-          });
-        }
-      }, 1000);
+      if(this.scrollArea.scrollTop < 20 && this.scrollArea.scrollHeight - this.scrollArea.clientHeight > 0){
+        this.timeoutScroll = setTimeout(() => {
+            this.getSocket.emit('loadMoreMessage', {
+              roomId: this.getRoom._id,
+              lastCreatedAt: this.lastCreatedAt
+            });
+        }, 1000);
+      }
     }
   },
   mounted() {
@@ -61,64 +59,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.message-area {
-  padding: 0px 16px;
-  overflow: auto;
-}
-.message {
-  margin-top: 26px;
-  font-size: 14px;
-  width: 100%;
-}
-.message:first-child {
-  margin-top: 0;
-}
-.message.left-message {
-}
-.message.right-message {
-  display: flex;
-}
-.message .message-user {
-  text-align: left;
-  margin: 0;
-  margin-bottom: 8px;
-}
-.message .message-content {
-  padding: 16px;
-  text-align: left;
-  width: 60%;
-  border-radius: 10px;
-  position: relative;
-}
-.message.left-message .message-content {
-  background: #f6f6f6;
-  border-bottom-left-radius: 0;
-}
-.message.right-message .message-content {
-  float: right;
-  text-align: right;
-  background: #5db075;
-  color: #fff;
-  border-bottom-right-radius: 0px;
-}
-.message .message-content:after {
-  content: " ";
-  position: absolute;
-  width: 0;
-  height: 0;
-  bottom: -20px;
-  border: 12px solid;
-}
-.message.left-message .message-content:after {
-  right: auto;
-  left: 0px;
-  border-color: #f6f6f6 transparent transparent #f6f6f6;
-}
-.message.right-message .message-content:after {
-  left: auto;
-  right: 0px;
-  border-color: #5db075 #5db075 transparent transparent;
-}
-</style>

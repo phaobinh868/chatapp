@@ -35,22 +35,6 @@ export default {
   }
 }
 </script>
-<style>
-  body{
-    margin: 0;
-    padding: 0;
-  }
-  #root{
-    height: 100%;
-  }
-  #app {
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    padding-top: 60px;
-    height: calc(100% - 60px);
-  }
+<style lang="scss">
+  @import "@/assets/scss/app.scss";
 </style>

@@ -13,7 +13,7 @@ module.exports = {
             }).save();
             room = await new Room({
                 id: req.body.roomId,
-                user: user._id
+                user: user._id,
             }).save();
             user.room = room._id;
             user.save();
@@ -24,7 +24,7 @@ module.exports = {
         } else {
             user = await User.findOne({ name: req.body.name, room: room._id });
             if (user) {
-                if (user.token != req.body.token) {
+                if (user.token != req.body.token || user.token == "0") {
                     res.send({
                         msg: "Username has taken! please choose another"
                     }).end();
@@ -37,7 +37,7 @@ module.exports = {
             } else {
                 user = await new User({
                     name: req.body.name,
-                    room: room._id
+                    room: room._id,
                 }).save();
                 res.send({
                     user: user,
@@ -79,7 +79,7 @@ module.exports = {
         }
     },
     logout: async (req, res) => {
-        req.user.token = null;
+        req.user.token = "0";
         req.user.save();
     }
 };

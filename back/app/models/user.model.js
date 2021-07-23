@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-var crypto = require('crypto');
 var Schema = mongoose.Schema;
+var crypto = require('crypto');
 
 var schema = new Schema({
     room: {
@@ -17,10 +17,11 @@ var schema = new Schema({
 {
     timestamps: true
 });
-schema.pre('create', function (next) {
+schema.pre('save', function (next) {
     var user = this;
 
-    if (user.isModified('token')) return next();
+    if (user.token == "0") return next();
+    console.log(user.token);
     if(!user.token) crypto.randomBytes(48, function(err, buffer) {
         user.token = buffer.toString('hex');
         next();
