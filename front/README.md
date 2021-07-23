@@ -1,4 +1,4 @@
-# vue-pwa-tutorial
+# chat-app
 
 ## Project setup
 ```
