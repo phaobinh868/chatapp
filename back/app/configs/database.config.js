@@ -1,3 +1,4 @@
 module.exports = {
-  uri: "mongodb://localhost:27017/chatapp"
+    redisConnectObj: { host: 'localhost', port: 6379 },
+    uri: "mongodb://localhost:27017/chatapp"
 };

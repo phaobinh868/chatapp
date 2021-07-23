@@ -1,5 +1,7 @@
 const ChatController = require('../controllers/ChatController');
 const appConfig = require('../configs/app.config.js');
+const databaseConfig = require('../configs/database.config.js');
+var redisAdapter = require('socket.io-redis');
 var io;
 
 exports.initial = function (server) {
@@ -8,6 +10,7 @@ exports.initial = function (server) {
       origin: appConfig.appDomain
     }
   });
+  io.adapter(redisAdapter(databaseConfig.redisConnectObj));
   io.on('connection', (socket) => {
     console.log('connection');
     socket.on('joinRoom', async (data) => {
