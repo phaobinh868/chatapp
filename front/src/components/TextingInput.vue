@@ -49,8 +49,6 @@ export default {
     },
     mounted() {
         this.textingArea = this.$refs.textingArea;
-    },
-    created() {
         this.focusTextingArea();
     }
 };
