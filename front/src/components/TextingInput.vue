@@ -1,6 +1,6 @@
 <template>
     <div class="texting-area">
-        <textarea
+        <textarea ref="textingArea"
             v-model.trim="content"
             v-on:keyup="onKeyUp"
             placeholder="Message here..."
@@ -17,7 +17,8 @@ export default {
     name: 'TextingInput',
     data: function() {
         return {
-            content: ''
+            content: '',
+            textingArea: null
         };
     },
     computed: {
@@ -33,6 +34,7 @@ export default {
                     content: this.content
                 });
                 this.content = '';
+                this.focusTextingArea();
             }
         },
         onKeyUp(e) {
@@ -40,9 +42,17 @@ export default {
             if (e.keyCode === 13 && !e.shiftKey) {
                 this.createMessage();
             }
+        },
+        focusTextingArea(){
+            this.$refs.textingArea.focus();
         }
     },
-    mounted() {}
+    mounted() {
+        this.textingArea = this.$refs.textingArea;
+    },
+    created() {
+        this.focusTextingArea();
+    }
 };
 </script>
 <style lang="scss" scoped>
