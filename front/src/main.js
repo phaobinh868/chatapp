@@ -8,6 +8,7 @@ import store from './stores';
 store.dispatch('setSocket', null);
 
 if (process.env.NODE_ENV === "development") {
+    console.log(process.env.VUE_APP_DEV_PROXY);
     store.dispatch('setServerUrl', process.env.VUE_APP_DEV_PROXY);
 } else {
     store.dispatch('setServerUrl', process.env.VUE_APP_PROD_PROXY);

@@ -24,7 +24,7 @@ export default {
       };
   },
   computed: {
-      ...mapGetters(['getUser', 'getRoom'])
+      ...mapGetters(['getUser', 'getRoom', 'getServerUrl'])
   },
   created() {
     if(this.getUser){
@@ -36,9 +36,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['setUser', 'setAuth', 'setRoom', 'getServerUrl']),
+    ...mapActions(['setUser', 'setAuth', 'setRoom']),
     login() {
       if (this.name && this.roomId) {
+    console.log(this.getServerUrl);
+
           axios.post(this.getServerUrl + '/api/join-room', {
             name: this.name,
             roomId: this.roomId,
