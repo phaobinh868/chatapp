@@ -9,7 +9,8 @@ export default createStore({
         socket: null,
         modalShow: false,
         modalMessage: "",
-        serverUrl: ""
+        serverUrl: "",
+        serverProxy: ""
     },
     getters: {
         getUser: state => state.user,
@@ -18,7 +19,8 @@ export default createStore({
         getSocket: state => state.socket,
         getModalShow: state => state.modalShow,
         getModalMessage: state => state.modalMessage,
-        getServerUrl: state => state.serverUrl
+        getServerUrl: state => state.serverUrl,
+        getServerProxy: state => state.serverProxy
     },
     mutations: {
         USER: (state, payload) => {
@@ -41,6 +43,9 @@ export default createStore({
         },
         SERVER_URL: (state, payload) => {
             state.serverUrl = payload;
+        },
+        SERVER_PROXY: (state, payload) => {
+            state.serverProxy = payload;
         },
     },
     actions: {
@@ -73,6 +78,9 @@ export default createStore({
         },
         setServerUrl: (context, payload) => {
             context.commit('SERVER_URL', payload);
+        },
+        setServerProxy: (context, payload) => {
+            context.commit('SERVER_PROXY', payload);
         },
     }
 });

@@ -29,7 +29,7 @@ export default {
       };
   },
   computed: {
-      ...mapGetters(['getUser', 'getRoom', 'getSocket', 'getServerUrl'])
+      ...mapGetters(['getUser', 'getRoom', 'getSocket', 'getServerProxy'])
   },
   methods: {
     ...mapActions(['setAuth', 'setSocket']),
@@ -44,7 +44,7 @@ export default {
       });
     },
     connectSocket() {
-      var socket = io(this.getServerUrl);
+      var socket = io(this.getServerProxy);
       this.$store.dispatch('setSocket', socket);
     }
   },

@@ -39,8 +39,6 @@ export default {
     ...mapActions(['setUser', 'setAuth', 'setRoom']),
     login() {
       if (this.name && this.roomId) {
-    console.log(this.getServerUrl);
-
           axios.post(this.getServerUrl + '/api/join-room', {
             name: this.name,
             roomId: this.roomId,
