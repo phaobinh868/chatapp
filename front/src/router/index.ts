@@ -1,19 +1,22 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import Login from '../views/Login.vue'
+import ChatRoom from '../views/ChatRoom.vue'
+import PageNotFound from '../views/PageNotFound.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'Login',
-        component: () => import('@/views/Login.vue')
+        component: Login
     },
     {
         path: '/chat-room',
         name: 'ChatRoom',
-        component: () => import('@/views/ChatRoom.vue')
+        component: ChatRoom
     },
     {
         path: "/:pathMatch(.*)*",
-        component: () => import('@/views/PageNotFound.vue')
+        component: PageNotFound
     }
 ]
 const router = createRouter({
