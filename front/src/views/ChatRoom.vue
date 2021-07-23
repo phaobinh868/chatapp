@@ -44,7 +44,11 @@ export default {
       });
     },
     connectSocket() {
-      var socket = io(this.getServerProxy);
+      var socket = io(this.getServerProxy, {
+        secure: true,
+        reconnect: true,
+        rejectUnauthorized : false
+      });
       this.$store.dispatch('setSocket', socket);
     }
   },
