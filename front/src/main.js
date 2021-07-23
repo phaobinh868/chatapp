@@ -56,4 +56,4 @@ axios.interceptors.response.use(
     }
 );
 
-createApp(App).use(router).use(store).mount('#app')
+createApp(App).use(router).use(store).mount('#root')

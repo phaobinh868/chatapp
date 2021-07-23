@@ -69,7 +69,7 @@ export default {
 
 <style>
   .chat-area{
-    height: calc(100vh - 60px);
+    height: 100%;
     display: flex;
     flex-direction: column;
   }
